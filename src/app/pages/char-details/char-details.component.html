@@ -1,0 +1,13 @@
+<div *ngFor="let details of details">
+  <h1 mat-dialog-title>{{details.name}}'s Profile</h1>
+<div mat-dialog-content >
+  <img mat-card-image src="{{details.thumbnail.path +'/standard_medium.'+details.thumbnail.extension}}" alt="Some Issue Loading Image..." />
+  <p >{{details.description}}</p>
+
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+</div>
+</div>
+
+
