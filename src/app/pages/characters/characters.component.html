@@ -1,1 +1,18 @@
-<p>characters works!</p>
+ <h4>Marvel Characters</h4>
+  <mat-grid-list *ngIf="!showSearchResult" cols="4" rowHeight="350px">
+    <mat-grid-tile *ngFor="let characters of characters | paginate: {itemsPerPage: 10, currentPage: page, totalItems:totalLength}">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>{{ characters.name }}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image src="{{characters.thumbnail.path +'/standard_medium.'+characters.thumbnail.extension}}" alt="Some Issue Loading Image..." />
+        <mat-card-content>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button (click)="openDetails(characters.id)">Details</button>
+        </mat-card-actions>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+<pagination-controls (pageChange)="page = $event"></pagination-controls>

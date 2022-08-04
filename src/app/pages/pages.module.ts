@@ -5,17 +5,23 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { MainComponent } from './main/main.component';
 import { CharactersComponent } from './characters/characters.component';
 import { EventsComponent } from './events/events.component';
+import { MaterialModule } from '../shared/material/material.module';
+import { CharDetailsComponent } from './char-details/char-details.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
   declarations: [
     MainComponent,
     CharactersComponent,
-    EventsComponent
+    EventsComponent,
+    CharDetailsComponent
   ],
   imports: [
     CommonModule,
-    PagesRoutingModule
+    PagesRoutingModule,
+    MaterialModule,
+    NgxPaginationModule
   ]
 })
 export class PagesModule { }
