@@ -1,11 +1,19 @@
- <h4>Marvel Characters</h4>
-  <mat-grid-list *ngIf="!showSearchResult" cols="4" rowHeight="350px">
-    <mat-grid-tile *ngFor="let characters of characters | paginate: {itemsPerPage: 10, currentPage: page, totalItems:totalLength}">
+<h2>Marvel Characters</h2>
+
+<mat-form-field appearance="fill">
+  <mat-label>Search a Character!</mat-label>
+  <input matInput #searchInput type="text" name="charName" placeholder="Search a character!" aria-label="Search" (keyup)="searchCharacter($event)">
+  <mat-icon matSuffix>search</mat-icon>
+</mat-form-field>
+
+<div *ngIf="!showSearchResult">
+  <mat-grid-list  cols="4" rowHeight="450px">
+    <mat-grid-tile *ngFor="let characters of characters | paginate: {itemsPerPage: 12, currentPage: page, totalItems:totalLength}">
       <mat-card class="example-card">
         <mat-card-header>
           <mat-card-title>{{ characters.name }}</mat-card-title>
         </mat-card-header>
-        <img mat-card-image src="{{characters.thumbnail.path +'/standard_medium.'+characters.thumbnail.extension}}" alt="Some Issue Loading Image..." />
+        <img mat-card-image src="{{characters.thumbnail.path +'/standard_fantastic.'+characters.thumbnail.extension}}" alt="Some Issue Loading Image..." />
         <mat-card-content>
         </mat-card-content>
         <mat-card-actions>
@@ -14,5 +22,23 @@
       </mat-card>
     </mat-grid-tile>
   </mat-grid-list>
+  <pagination-controls (pageChange)="page = $event"></pagination-controls>
+</div>
 
-<pagination-controls (pageChange)="page = $event"></pagination-controls>
+<div *ngIf="showSearchResult">
+  <mat-grid-list  cols="4" rowHeight="450px">
+    <mat-grid-tile *ngFor="let characters of searchedChar">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>{{ characters.name }}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image src="{{characters.thumbnail.path +'/standard_fantastic.'+characters.thumbnail.extension}}" alt="Some Issue Loading Image..." />
+        <mat-card-content>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button (click)="openDetails(characters.id)">Details</button>
+        </mat-card-actions>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
