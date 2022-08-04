@@ -1,0 +1,36 @@
+<div *ngFor="let details of details">
+      <h1 mat-dialog-title>{{details.title}} Info</h1>
+      <div mat-dialog-content >
+
+        <mat-tab-group>
+          <mat-tab label="General">
+            <img mat-card-image src="{{details.thumbnail.path +'/standard_fantastic.'+details.thumbnail.extension}}" alt="Some Issue Loading Image..." />
+            <p >{{details.description}}</p>
+            <p>Previous: {{details.previous.name}}</p>
+            <p>Next: {{details.next.name}}</p>
+          </mat-tab>
+
+          <mat-tab label="Characters">
+            <h4>Characters in this event</h4>
+            <mat-grid-list cols="2" rowHeight="300px">
+              <mat-grid-tile *ngFor="let characters of characters | paginate: {itemsPerPage: 10, currentPage: page, totalItems:totalLength}">
+                <mat-card class="example-card">
+                  <mat-card-header>
+                    <mat-card-title>{{ characters.name }}</mat-card-title>
+                  </mat-card-header>
+                  <img mat-card-image src="{{characters.thumbnail.path +'/standard_xlarge.'+characters.thumbnail.extension}}" alt="Some Issue Loading Image..." />
+                </mat-card>
+              </mat-grid-tile>
+            </mat-grid-list>
+
+          <pagination-controls (pageChange)="page = $event"></pagination-controls>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+      <div mat-dialog-actions>
+        <button mat-button mat-dialog-close>Close</button>
+      </div>
+</div>
+
+
+

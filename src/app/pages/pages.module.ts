@@ -8,6 +8,7 @@ import { EventsComponent } from './events/events.component';
 import { MaterialModule } from '../shared/material/material.module';
 import { CharDetailsComponent } from './char-details/char-details.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { EventDetailsComponent } from './event-details/event-details.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     MainComponent,
     CharactersComponent,
     EventsComponent,
-    CharDetailsComponent
+    CharDetailsComponent,
+    EventDetailsComponent
   ],
   imports: [
     CommonModule,

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { debounceTime, distinctUntilChanged, filter, tap, Observable, fromEvent } from 'rxjs';
 import { MarvelApiService } from 'src/app/services/marvel-api/marvel-api.service';
 import { CharDetailsComponent } from '../char-details/char-details.component';
 
@@ -10,13 +11,17 @@ import { CharDetailsComponent } from '../char-details/char-details.component';
 })
 export class CharactersComponent implements OnInit {
 
+  @ViewChild('searchInput') searchInput!: ElementRef;
+
   constructor(
     private marvelApi:MarvelApiService,
     private charDialog: MatDialog
     ) { }
 
   characters:any=[];
-  showSearchResult: boolean = false;
+  charName!:string;
+  showSearchResult!: boolean;
+  searchedChar:any=[];
 
   totalLength:any;
   page:number = 1;
@@ -36,4 +41,16 @@ export class CharactersComponent implements OnInit {
     })
   }
 
+  searchCharacter(event:any){
+    this.charName = event.target.value;
+    this.marvelApi.getCharacterByName(this.charName).subscribe((result)=>{
+      if(result.data.count>0){
+        this.showSearchResult = true;
+        this.searchedChar = result.data.results;
+      }
+      else{
+        this.ngOnInit();
+      }
+    })
+  }
 }
