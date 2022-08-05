@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "marvel-iconic": {
+      "hosting": {
+        "app-marvel": [
+          "marvel-iconic"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "marvel-iconic"
+  }
+}
