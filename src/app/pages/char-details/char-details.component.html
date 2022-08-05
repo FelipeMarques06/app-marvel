@@ -1,10 +1,33 @@
 <div *ngFor="let details of details">
   <h1 mat-dialog-title>{{details.name}}'s Profile</h1>
 <div mat-dialog-content >
-  <img mat-card-image src="{{details.thumbnail.path +'/portrait_uncanny.'+details.thumbnail.extension}}" alt="Some Issue Loading Image..." />
-  <p >{{details.description}}</p>
+  <mat-tab-group>
+    <mat-tab label="General Info">
+      <img mat-card-image src="{{details.thumbnail.path +'/portrait_uncanny.'+details.thumbnail.extension}}" alt="Some Issue Loading Image..." />
+      <p >{{details.description}}</p>
+    </mat-tab>
 
+    <mat-tab label="Comics">
+        <div *ngIf="comics.length>0; else nocomics">
+          <mat-grid-list cols="3" rowHeight="300px">
+            <mat-grid-tile *ngFor="let comics of comics">
+              <mat-card class="example-card">
+                <mat-card-header>
+                  <mat-card-title>{{ comics.title }}</mat-card-title>
+                </mat-card-header>
+                <img mat-card-image src="{{comics.thumbnail.path +'/standard_xlarge.'+comics.thumbnail.extension}}" alt="Some Issue Loading Image..." />
+              </mat-card>
+            </mat-grid-tile>
+          </mat-grid-list>
+          <mat-divider></mat-divider>
+        </div>
+        <ng-template #nocomics>
+          <p>Sorry, no Comics available for this character</p>
+        </ng-template>
+    </mat-tab>
+  </mat-tab-group>
 </div>
+
 <div mat-dialog-actions>
   <button mat-button mat-dialog-close>Close</button>
 </div>

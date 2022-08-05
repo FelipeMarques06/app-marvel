@@ -17,6 +17,8 @@ export class EventsComponent implements OnInit {
 
   events:any=[];
   showSearchResult: boolean = false;
+  searchedEvent: any=[];
+  filter:string = "Choose a team";
 
   totalLength:any;
   page:number = 1;
@@ -28,12 +30,29 @@ export class EventsComponent implements OnInit {
       this.events = result.data.results;
       this.totalLength = result.length;
     })
+    this.filter = "Choose a team";
   }
 
   openDetails(eventId:string){
     this.eventDialog.open(EventDetailsComponent,{
-      data: eventId
+      data: eventId,
+      width: '70vw',
+      height:'80vh',
+      maxWidth: '100vw',
+      maxHeight: '100vh'
     })
+  }
+
+  filterEventByChar(characterId:string){
+    this.marvelApi.getEventsByCharacter(characterId).subscribe((result)=>{
+      this.showSearchResult=true;
+      this.searchedEvent = result.data.results;
+    })
+    if(characterId==="1009165"){
+      this.filter="Avengers";
+    } else {
+      this.filter="X-Men";
+    }
   }
 
 }

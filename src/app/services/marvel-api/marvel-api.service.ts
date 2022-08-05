@@ -21,6 +21,11 @@ export class MarvelApiService {
     return this.http.get(charDetailsUrl);
   }
 
+  getCharactersComics(characterId:string):Observable<any>{
+    const charDetails2Url=`https://gateway.marvel.com:443/v1/public/characters/${characterId}/comics?limit=100&ts=1&apikey=29a0ce3cb104e468f9082e31fd5e544f&hash=6edbb1d327d97efeded233382d8527e8`
+    return this.http.get(charDetails2Url);
+  }
+
   getCharacterByName(charName:string):Observable<any>{
     const charNameUrl=`https://gateway.marvel.com:443/v1/public/characters?name=${charName}&ts=1&apikey=29a0ce3cb104e468f9082e31fd5e544f&hash=6edbb1d327d97efeded233382d8527e8`
     return this.http.get(charNameUrl);
@@ -38,5 +43,10 @@ export class MarvelApiService {
   getEventCharacters(eventId:string):Observable<any>{
     const eventDetails2Url=`https://gateway.marvel.com:443/v1/public/events/${eventId}/characters?limit=100&ts=1&apikey=29a0ce3cb104e468f9082e31fd5e544f&hash=6edbb1d327d97efeded233382d8527e8`
     return this.http.get(eventDetails2Url);
+  }
+
+  getEventsByCharacter(characterId:string):Observable<any>{
+    const eventsByCharUrl=`https://gateway.marvel.com:443/v1/public/characters/${characterId}/events?limit=100&ts=1&apikey=29a0ce3cb104e468f9082e31fd5e544f&hash=6edbb1d327d97efeded233382d8527e8`
+    return this.http.get(eventsByCharUrl);
   }
 }
