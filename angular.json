@@ -102,6 +102,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "app-marvel:build:production",
+            "firebaseProject": "marvel-iconic",
+            "firebaseHostingSite": "marvel-iconic"
+          }
         }
       }
     }

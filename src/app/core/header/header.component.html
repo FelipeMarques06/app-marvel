@@ -1,5 +1,21 @@
 <mat-toolbar>
-  <a routerLink="/">Home</a>
-  <a routerLink="/characters">Characters</a>
-  <a routerLink="/events">Events</a>
+    <button routerLink="/" mat-button color="primary">Home</button>
+  <ng-container *ngIf="user$ | async as user; else loginButton">
+    <button routerLink="/characters" mat-button color="primary">Characters</button>
+    <button routerLink="/events" mat-button color="primary">Events</button>
+    <button mat-button color="primary" [matMenuTriggerFor]="userMenu">
+      <span>Agent </span>
+      {{user.displayName}}
+      <mat-icon>expand_more</mat-icon>
+    </button>
+  </ng-container>
+  <ng-template #loginButton>
+    <button mat-raised-button color="primary" (click)="openLogin('Login Dialog')">
+      <mat-icon class="mat-18">login</mat-icon>
+      LOGIN
+    </button>
+  </ng-template>
+  <mat-menu #userMenu="matMenu">
+    <button mat-menu-item (click)="logout()">LOGOUT</button>
+  </mat-menu>
 </mat-toolbar>
