@@ -1,18 +1,49 @@
 <h4>Marvel Events</h4>
-<mat-grid-list *ngIf="!showSearchResult" cols="4" rowHeight="450px">
-  <mat-grid-tile *ngFor="let events of events | paginate: {itemsPerPage: 12, currentPage: page, totalItems:totalLength}">
-    <mat-card class="example-card">
-      <mat-card-header>
-        <mat-card-title>{{ events.title }}</mat-card-title>
-      </mat-card-header>
-      <img mat-card-image src="{{events.thumbnail.path +'/standard_fantastic.'+events.thumbnail.extension}}" alt="Some Issue Loading Image..." />
-      <mat-card-content>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button (click)="openDetails(events.id)">Details</button>
-      </mat-card-actions>
-    </mat-card>
-  </mat-grid-tile>
-</mat-grid-list>
+<span>Filter by Team:</span>
+<button mat-button color="primary" [matMenuTriggerFor]="filterMenu">
+  {{filter}}
+  <mat-icon>expand_more</mat-icon>
+</button>
+<mat-menu #filterMenu="matMenu">
+  <button mat-menu-item (click)='filterEventByChar("1009165")'>Avengers</button>
+  <button mat-menu-item (click)='filterEventByChar("1009726")'>X-Men</button>
+  <button mat-menu-item (click)='ngOnInit()'>Reset Filter</button>
+</mat-menu>
 
-<pagination-controls (pageChange)="page = $event"></pagination-controls>
+<div *ngIf="!showSearchResult" >
+  <mat-grid-list cols="4" rowHeight="450px">
+    <mat-grid-tile *ngFor="let events of events | paginate: {itemsPerPage: 12, currentPage: page, totalItems:totalLength}">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>{{ events.title }}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image src="{{events.thumbnail.path +'/standard_fantastic.'+events.thumbnail.extension}}" alt="Some Issue Loading Image..." />
+        <mat-card-content>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button (click)="openDetails(events.id)">Details</button>
+        </mat-card-actions>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <pagination-controls (pageChange)="page = $event"></pagination-controls>
+</div>
+
+<div *ngIf="showSearchResult">
+  <mat-grid-list  cols="4" rowHeight="450px">
+    <mat-grid-tile *ngFor="let events of searchedEvent | paginate: {itemsPerPage: 12, currentPage: page, totalItems:totalLength}">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>{{ events.title }}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image src="{{events.thumbnail.path +'/standard_fantastic.'+events.thumbnail.extension}}" alt="Some Issue Loading Image..." />
+        <mat-card-content>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button (click)="openDetails(events.id)">Details</button>
+        </mat-card-actions>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <pagination-controls (pageChange)="page = $event"></pagination-controls>
+</div>

@@ -37,7 +37,11 @@ export class CharactersComponent implements OnInit {
 
   openDetails(characterId:string){
     this.charDialog.open(CharDetailsComponent,{
-      data: characterId
+      data: characterId,
+      width: '70vw',
+      height:'80vh',
+      maxWidth: '100vw',
+      maxHeight: '100vh'
     })
   }
 
