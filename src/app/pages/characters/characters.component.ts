@@ -42,9 +42,9 @@ export class CharactersComponent implements OnInit {
     this.charDialog.open(CharDetailsComponent,{
       data: characterId,
       width: '70vw',
-      height:'80vh',
+      height:'70vh',
       maxWidth: '100vw',
-      maxHeight: '100vh'
+      panelClass: 'custom-modalbox'
     })
   }
 

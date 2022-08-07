@@ -12,3 +12,11 @@ $custom-theme: mat-light-theme($custom-app-primary, $custom-app-accent, $custom-
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.custom-modalbox {
+  mat-dialog-container {
+      padding: 0;
+      overflow-y: hidden;
+      overflow-x: hidden;
+  }
+}

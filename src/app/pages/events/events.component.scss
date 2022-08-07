@@ -1,4 +1,39 @@
+.filterField{
+  display: flex;
+  justify-content: center;
+  margin: 2rem auto;
+  text-align: center;
+  font-family: 'Marvel', sans-serif;
+  font-size: 20px;
+}
+
+.filterField button{
+  padding: 5px;
+  margin: 0;
+  border: 0;
+  font-family: 'Marvel', sans-serif;
+  font-size: 20px;
+}
+
+mat-card{
+  background-color: #212121;
+  border-radius: 12px 12px 30px 5px;;
+  color: #F5F5F5;
+  max-width: 200px;
+  text-align: center;
+  justify-content: center;
+  font-family: 'Marvel', sans-serif;
+}
+
 mat-card img{
   max-height: 250px;
   max-width: 250px;
+}
+
+mat-card:hover{
+  background-color: #BF360C;
+}
+
+mat-card-header{
+  justify-content: center;
 }

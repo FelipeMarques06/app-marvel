@@ -11,6 +11,7 @@ export class EventDetailsComponent implements OnInit {
 
   details:any=[];
   characters:any=[];
+  breakpoint!:number;
 
   totalLength:any;
   page:number = 1;
@@ -21,6 +22,8 @@ export class EventDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.breakpoint = (window.innerWidth <= 600) ? 1 :
+    this.breakpoint = (window.innerWidth <= 800) ? 2 : 3;
     this.marvelApi.getEventDetails(this.eventId).subscribe((result)=>{
       this.details = result.data.results;
       console.log(this.details)
@@ -30,5 +33,10 @@ export class EventDetailsComponent implements OnInit {
       console.log(this.characters)
     });
   }
+
+  handleSize(event: any) {
+    this.breakpoint = (event.target.innerWidth <= 600) ? 1 :
+    this.breakpoint = (event.target.innerWidth <= 800) ? 2 : 3
+    }
 
 }

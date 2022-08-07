@@ -1,9 +1,3 @@
-.example-card {
-  max-width: 400px;
-
-  text-align: center;
-}
-
 .searchField{
   display: flex;
   justify-content: center;
@@ -11,14 +5,31 @@
   text-align: center;
 }
 
+mat-label{
+  font-family: 'Marvel', sans-serif;
+}
+
 mat-card{
   background-color: #212121;
-  border-radius: 12px;
+  border-radius: 12px 12px 30px 5px;;
   color: #F5F5F5;
+  max-width: 200px;
+  text-align: center;
+  justify-content: center;
+  font-family: 'Marvel', sans-serif;
+}
+
+mat-card img{
+  max-width: 250px;
+  max-height: 250px;
 }
 
 mat-card:hover{
   background-color: #BF360C;
+}
+
+mat-card-header{
+  justify-content: center;
 }
 
 

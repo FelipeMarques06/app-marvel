@@ -1,14 +1,14 @@
-<h4>Marvel Events</h4>
-<span>Filter by Team:</span>
-<button mat-button color="primary" [matMenuTriggerFor]="filterMenu">
+<div class="filterField">
+  <button mat-button [matMenuTriggerFor]="filterMenu">
   {{filter}}
   <mat-icon>expand_more</mat-icon>
-</button>
-<mat-menu #filterMenu="matMenu">
-  <button mat-menu-item (click)='filterEventByChar("1009165")'>Avengers</button>
-  <button mat-menu-item (click)='filterEventByChar("1009726")'>X-Men</button>
-  <button mat-menu-item (click)='ngOnInit()'>Reset Filter</button>
-</mat-menu>
+  </button>
+  <mat-menu #filterMenu="matMenu">
+    <button mat-menu-item (click)='filterEventByChar("1009165")'>Avengers</button>
+    <button mat-menu-item (click)='filterEventByChar("1009726")'>X-Men</button>
+    <button mat-menu-item (click)='ngOnInit()'>Reset Filter</button>
+  </mat-menu>
+</div>
 
 <div *ngIf="!showSearchResult" >
   <mat-grid-list [cols]="breakpoint" rowHeight="450px" (window:resize)="handleSize($event)">
