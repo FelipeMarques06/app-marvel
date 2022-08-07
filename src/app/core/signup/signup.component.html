@@ -1,29 +1,29 @@
 <mat-grid-list cols="1" [rowHeight]="'100px'" [gutterSize]="'1px'">
-  <mat-grid-tile [colspan]="1" [rowspan]="1">Signup to Marvel Database!</mat-grid-tile>
-  <mat-card>
-    <img mat-card-image src="" alt="User Signup Cover">
-    <form [formGroup]="signupForm" (ngSubmit)="sendSignup()">
-      <mat-form-field>
-        <input matInput placeholder="Your name here" formControlName="name">
-        <mat-error *ngIf="name?.errors?.['required']">You need to inform your name</mat-error>
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput placeholder="Your email here" formControlName="email">
-        <mat-error *ngIf="email?.errors?.['required']">You need to inform an email</mat-error>
-        <mat-error *ngIf="email?.errors?.['email']">Email format is not valid</mat-error>
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput placeholder="Enter your password" formControlName="password" type="password">
-        <mat-error *ngIf="password?.errors?.['required']">You need to inform a password</mat-error>
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput placeholder="Enter your password again" formControlName="confirmPassword" type="password">
-        <mat-error *ngIf="password?.errors?.['required']">Confirm your password</mat-error>
-        <mat-error *ngIf="signupForm.errors?.['confirmPassword']">Check your passwords</mat-error>
-      </mat-form-field>
-      <mat-card-footer>
-        <button mat-button color="accent" type="submit">Signup</button>
-      </mat-card-footer>
-    </form>
-  </mat-card>
+  <mat-grid-tile [colspan]="1" [rowspan]="1"><h1>Join Marvel Database!</h1></mat-grid-tile>
+    <div class="form-container">
+      <form [formGroup]="signupForm" (ngSubmit)="sendSignup()">
+        <mat-form-field id="firstItem">
+          <input matInput placeholder="Your name here" formControlName="name">
+          <mat-error *ngIf="name?.errors?.['required']">You need to inform your name</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Your email here" formControlName="email">
+          <mat-error *ngIf="email?.errors?.['required']">You need to inform an email</mat-error>
+          <mat-error *ngIf="email?.errors?.['email']">Email format is not valid</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Enter your password" formControlName="password" type="password">
+          <mat-error *ngIf="password?.errors?.['required']">You need to inform a password</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Enter your password again" formControlName="confirmPassword" type="password">
+          <mat-error *ngIf="password?.errors?.['required']">Confirm your password</mat-error>
+          <mat-error *ngIf="signupForm.errors?.['confirmPassword']">Check your passwords</mat-error>
+        </mat-form-field>
+        <div class="center">
+          <button mat-raised-button color="primary" type="submit">JOIN</button>
+        </div>
+      </form>
+    </div>
 </mat-grid-list>
+

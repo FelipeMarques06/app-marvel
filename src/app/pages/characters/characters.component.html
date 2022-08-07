@@ -12,7 +12,7 @@
     <mat-grid-tile *ngFor="let characters of characters | paginate: {itemsPerPage: 12, currentPage: page, totalItems:totalLength}">
       <mat-card class="example-card">
         <mat-card-header>
-          <mat-card-title>{{ characters.name }}</mat-card-title>
+          <mat-card-title>{{characters.name}}</mat-card-title>
         </mat-card-header>
         <img mat-card-image src="{{characters.thumbnail.path +'/standard_fantastic.'+characters.thumbnail.extension}}" alt="Some Issue Loading Image..." />
         <mat-card-content>

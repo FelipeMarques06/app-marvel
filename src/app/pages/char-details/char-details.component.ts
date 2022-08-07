@@ -15,6 +15,7 @@ export class CharDetailsComponent implements OnInit {
 
   totalLength:any;
   page:number = 1;
+  breakpoint!:number;
 
   constructor(
     private marvelApi: MarvelApiService,
@@ -22,6 +23,8 @@ export class CharDetailsComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+    this.breakpoint = (window.innerWidth <= 600) ? 1 :
+    this.breakpoint = (window.innerWidth <= 800) ? 2 : 3;
     this.marvelApi.getCharacterDetails(this.characterId).subscribe((result)=>{
       console.log(result);
       this.details = result.data.results;
@@ -33,5 +36,10 @@ export class CharDetailsComponent implements OnInit {
       console.log(this.comics);
     })
   }
+
+  handleSize(event: any) {
+    this.breakpoint = (event.target.innerWidth <= 600) ? 1 :
+    this.breakpoint = (event.target.innerWidth <= 800) ? 2 : 3
+    }
 
 }

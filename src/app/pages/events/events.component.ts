@@ -18,7 +18,7 @@ export class EventsComponent implements OnInit {
   events:any=[];
   showSearchResult: boolean = false;
   searchedEvent: any=[];
-  filter:string = "Choose a team";
+  filter:string = "Filter by Team";
   breakpoint!:number;
 
   totalLength:any;
@@ -33,7 +33,7 @@ export class EventsComponent implements OnInit {
       this.events = result.data.results;
       this.totalLength = result.length;
     })
-    this.filter = "Choose a team";
+    this.filter = "Filter by Team";
   }
 
   openDetails(eventId:string){
@@ -41,8 +41,8 @@ export class EventsComponent implements OnInit {
       data: eventId,
       width: '70vw',
       height:'80vh',
-      maxWidth: '100vw',
-      maxHeight: '100vh'
+      maxWidth: '70vw',
+      panelClass: 'custom-modalbox'
     })
   }
 
