@@ -4,3 +4,21 @@
   text-align: center;
 }
 
+.searchField{
+  display: flex;
+  justify-content: center;
+  margin: 1rem auto;
+  text-align: center;
+}
+
+mat-card{
+  background-color: #212121;
+  border-radius: 12px;
+  color: #F5F5F5;
+}
+
+mat-card:hover{
+  background-color: #BF360C;
+}
+
+
