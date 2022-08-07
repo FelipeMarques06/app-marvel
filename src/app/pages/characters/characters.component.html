@@ -1,13 +1,14 @@
-<h2>Marvel Characters</h2>
+<div class="searchField">
+  <mat-form-field appearance="fill">
+    <mat-label>Search a Character!</mat-label>
+    <input matInput #searchInput type="text" name="charName" placeholder="Search a character!" aria-label="Search" (keyup)="searchCharacter($event)">
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+</div>
 
-<mat-form-field appearance="fill">
-  <mat-label>Search a Character!</mat-label>
-  <input matInput #searchInput type="text" name="charName" placeholder="Search a character!" aria-label="Search" (keyup)="searchCharacter($event)">
-  <mat-icon matSuffix>search</mat-icon>
-</mat-form-field>
 
 <div *ngIf="!showSearchResult">
-  <mat-grid-list  cols="4" rowHeight="450px">
+  <mat-grid-list  [cols]="breakpoint" rowHeight="450px" (window:resize)="handleSize($event)">
     <mat-grid-tile *ngFor="let characters of characters | paginate: {itemsPerPage: 12, currentPage: page, totalItems:totalLength}">
       <mat-card class="example-card">
         <mat-card-header>
@@ -26,7 +27,7 @@
 </div>
 
 <div *ngIf="showSearchResult">
-  <mat-grid-list  cols="4" rowHeight="450px">
+  <mat-grid-list  cols="1" rowHeight="450px">
     <mat-grid-tile *ngFor="let characters of searchedChar">
       <mat-card class="example-card">
         <mat-card-header>

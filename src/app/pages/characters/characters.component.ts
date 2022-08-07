@@ -22,11 +22,14 @@ export class CharactersComponent implements OnInit {
   charName!:string;
   showSearchResult!: boolean;
   searchedChar:any=[];
+  breakpoint!:number;
 
   totalLength:any;
   page:number = 1;
 
   ngOnInit(): void {
+    this.breakpoint = (window.innerWidth <= 600) ? 1 :
+    this.breakpoint = (window.innerWidth <= 800) ? 2 : 3;
     this.showSearchResult=false;
     this.marvelApi.getCharacters().subscribe((result)=>{
       console.log(result);
@@ -57,4 +60,10 @@ export class CharactersComponent implements OnInit {
       }
     })
   }
+
+  handleSize(event: any) {
+    this.breakpoint = (event.target.innerWidth <= 600) ? 1 :
+    this.breakpoint = (event.target.innerWidth <= 800) ? 2 : 3
+    }
+
 }

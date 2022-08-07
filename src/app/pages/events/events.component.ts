@@ -19,11 +19,14 @@ export class EventsComponent implements OnInit {
   showSearchResult: boolean = false;
   searchedEvent: any=[];
   filter:string = "Choose a team";
+  breakpoint!:number;
 
   totalLength:any;
   page:number = 1;
 
   ngOnInit(): void {
+    this.breakpoint = (window.innerWidth <= 600) ? 1 :
+    this.breakpoint = (window.innerWidth <= 800) ? 2 : 3;
     this.showSearchResult=false;
     this.marvelApi.getEvents().subscribe((result)=>{
       console.log(result);
@@ -54,5 +57,10 @@ export class EventsComponent implements OnInit {
       this.filter="X-Men";
     }
   }
+
+  handleSize(event: any) {
+    this.breakpoint = (event.target.innerWidth <= 600) ? 1 :
+    this.breakpoint = (event.target.innerWidth <= 800) ? 2 : 3
+    }
 
 }

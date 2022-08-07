@@ -2,9 +2,21 @@ a{
   padding: 2px;
 }
 
+.firstBanner{
+  justify-content: space-between;
+}
+
+.secondBanner{
+  max-height: 5%;
+}
+
+mat-toolbar img{
+  width: 100px;
+  max-height: 100px;
+}
+
 .mat-toolbar.mat-primary {
   position: sticky;
   top: 0;
   z-index: 1;
-  justify-content: space-between;
 }
