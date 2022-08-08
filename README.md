@@ -4,8 +4,8 @@ Projeto criado com [Angular CLI](https://github.com/angular/angular-cli) versão
 
 ## Como utilizar
 
-npm install para instalar as dependências necessárias
-ng serve e em seguida navegue até `http://localhost:4200/`
+- npm install para instalar as dependências necessárias
+- ng serve e em seguida navegue até `http://localhost:4200/`
 
 OBS: É necessário criar um usuário e logar para acessar determinadas páginas.
 
